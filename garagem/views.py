@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
 from garagem.models import Categoria, Editora, Livro, Autor
-from garagem.serializers import CategoriaSerializer, EditoraSerializer, LivroSerializer, AutorSerializer
+from garagem.serializers import CategoriaSerializer, EditoraSerializer, LivroSerializer, AutorSerializer, LivroDetailSerializer, LivroListSerializer
 
 class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
@@ -14,7 +14,13 @@ class EditoraViewSet(ModelViewSet):
 
 class LivroViewSet(ModelViewSet):
     queryset = Livro.objects.all()
-    serializer_class = LivroSerializer
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return LivroListSerializer
+        elif self.action == "retrieve":
+            return LivroDetailSerializer
+        return LivroSerializer
 
 class AutorViewSet(ModelViewSet):
     queryset = Autor.objects.all()
