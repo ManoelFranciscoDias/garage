@@ -28,7 +28,9 @@ class Autor(models.Model):
 
 
 class Livro(models.Model):
+    
     titulo = models.CharField(max_length=255)
+    autores = models.ManyToManyField(Autor, related_name="livros")
     isbn = models.CharField(max_length=32, null=True, blank=True)
     quantidade = models.IntegerField(default=0, null=True, blank=True)
     preco = models.DecimalField(
