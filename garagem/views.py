@@ -1,13 +1,15 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
+
 from garagem.models import Categoria, Editora, Livro, Autor
 from garagem.serializers import CategoriaSerializer, EditoraSerializer, LivroSerializer, AutorSerializer, LivroDetailSerializer, LivroListSerializer
 
 class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
+
 
 
 
