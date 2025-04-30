@@ -1,18 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework.serializers import ModelSerializer
 
-from garagem.models import Categoria, Editora, Livro, Autor
-
-class CategoriaSerializer(ModelSerializer):
-    class Meta:
-        model = Categoria
-        fields = "__all__"
-
-
-class EditoraSerializer(ModelSerializer):
-    class Meta:
-        model = Editora
-        fields = "__all__"
+from garagem.models import Livro
 
 class LivroSerializer(ModelSerializer):
     class Meta:
@@ -26,10 +15,6 @@ class LivroDetailSerializer(ModelSerializer):
         fields = "__all__"
         depth = 1
 
-class AutorSerializer(ModelSerializer):
-    class Meta:
-        model = Autor
-        fields = "__all__"
 
 
 class LivroListSerializer(ModelSerializer):
