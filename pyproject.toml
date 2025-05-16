@@ -1,14 +1,30 @@
 [project]
-name = "garagem"
+name = "garage"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
-    {name = "ManoelFraciscoDias", email = "manoel2007dias@gmail.com"},
+    { name = "ManoelFraciscoDias", email = "manoel2007dias@gmail.com" },
+    {name = "ManoelFranciscoDias", email = "manoel2007dias@gmail.com"},
 ]
-dependencies = ["django>=5.2", "djangorestframework>=3.16.0", "django-cors-headers>=4.7.0", "djangorestframework-simplejwt>=5.5.0", "setuptools>=80.3.1", "Pillow>=11.2.1", "python-magic>=0.4.27; sys_platform == \"linux\"", "python-magic-bin>=0.4.14; sys_platform == \"win32, darwin\"", "drf-spectacular>=0.28.0", "python-dotenv>=1.1.0", "netifaces>=0.11.0"]
+dependencies = [
+    "django>=5.2",
+    "djangorestframework>=3.16.0",
+    "django-cors-headers>=4.7.0",
+    "djangorestframework-simplejwt>=5.5.0",
+    "setuptools>=80.3.1",
+    "Pillow>=11.2.1",
+    "python-magic>=0.4.27; sys_platform == \"linux\"",
+    "python-magic-bin>=0.4.14; sys_platform == \"win32, darwin\"",
+    "drf-spectacular>=0.28.0",
+    "python-dotenv>=1.1.0",
+    "netifaces>=0.11.0",
+    "dj-database-url>=2.3.0",
+    "psycopg2>=2.9.10",
+    "psycopg2-binary>=2.9.10",
+]
 requires-python = "==3.13.*"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
 
 [tool.pdm]
@@ -25,5 +41,3 @@ test = "python manage.py test"
 startapp = "python manage.py startapp {args}"
 loaddata = "python manage.py loaddata {args}"
 dumpdata = "python manage.py dumpdata {args}"
-
-
