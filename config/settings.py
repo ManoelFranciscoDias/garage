@@ -14,6 +14,9 @@ import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
 
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 load_dotenv()
 
 MODE = os.getenv("MODE")
@@ -23,7 +26,13 @@ DEBUG = os.getenv("DEBUG", "False")
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://*.fl0.io/"]
 
+STATIC_URL = "/static/"
+
 if MODE in ["PRODUCTION", "MIGRATE"]:
+    CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     MEDIA_URL = '/media/'
 else:
     MY_IP = os.getenv("MY_IP", "127.0.0.1")
@@ -60,6 +69,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'usuario',
     'uploader',
+    'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'drf_spectacular',
     'garagem',
 ]
